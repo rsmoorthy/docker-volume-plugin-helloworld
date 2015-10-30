@@ -1,0 +1,20 @@
+{
+  "name": "helloworld-docker-volume-plugin",
+  "version": "0.0.1",
+  "description": "A Hello World for Docker Volume Plugin",
+  "author": "https://github.com/rsmoorthy",
+  "license": "MIT",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rsmoorthy/docker-volume-plugin-helloworld"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "body-parser": "^1.14.1",
+    "request": "^2.65.0",
+    "express-json": "^1.0.0",
+    "raw-body": "^2.1.4",
+    "shelljs": "^0.5.3"
+  }
+}
