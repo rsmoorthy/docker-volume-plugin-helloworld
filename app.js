@@ -117,7 +117,8 @@ function sshMount(volume_name, cb)
 	var mountPath = getMountPath(volume_name)
 	var sshArgs = getSshArgs(volume_name)
 
-	var sshCmd = "sshfs -o reconnect -o password_stdin -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o allow_root -o uid=0 -o gid=0 "
+	var sshCmd = "sshfs -o reconnect -o password_stdin -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+	sshCmd += " -o allow_root -o uid=0 -o gid=0 "
 	sshCmd += sshArgs.user + '@' + sshArgs.host + ":"
 	if(sshArgs.dir.length)
 		sshCmd += sshArgs.dir
