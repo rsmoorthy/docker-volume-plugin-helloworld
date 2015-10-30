@@ -25,11 +25,11 @@ app.post('/VolumeDriver.Mount', function(req, resp) {
 	resp.json( {MountPoint: "/tmp/mnt/" + req.body.Name, Err: null}).end()
 })
 
-app.post('/VolumeDriver.Path', jsonParser, function(req, resp) {
+app.post('/VolumeDriver.Path', function(req, resp) {
 	resp.json( {MountPoint: "/tmp/mnt/" + req.body.Name, Err: null}).end()
 })
 
-app.post('/VolumeDriver.Unmount', jsonParser, function(req, resp) {
+app.post('/VolumeDriver.Unmount', function(req, resp) {
 	resp.json( {MountPoint: "/tmp/mnt/" + req.body.Name, Err: null}).end()
 })
 
