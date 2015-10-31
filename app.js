@@ -39,11 +39,12 @@ app.post('/VolumeDriver.Mount', function(req, resp) {
 	if(!mountPath)
 		return resp.json({Err: "Volume_Name does not exist OR Invalid Volume_Name provided"}).end()
 	if(req.body.Name.match("^ssh")) {
+		if(mounts[mountPath])
+			return resp.json({MountPoint: mountPath, Err: null}).end()
 		sshMount(req.body.Name, function(err, out) {
 			if(err) return resp.json({Err: err}.end())
 			mounts[mountPath] = true
 			console.log("\tSuccessfully mounted " + mountPath)
-			// console.log(exec("ls -l " + mountPath).output)
 			resp.json({MountPoint: mountPath, Err: null}).end()
 		})
 	}
