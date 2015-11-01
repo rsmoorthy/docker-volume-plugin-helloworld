@@ -44,7 +44,7 @@ app.post('/VolumeDriver.Mount', function(req, resp) {
 		sshMount(req.body.Name, function(err, out) {
 			if(err) return resp.json({Err: err}.end())
 			mounts[mountPath] = true
-			console.log("\tSuccessfully mounted " + mountPath)
+			console.log("\tSuccessfully mounted " + mountPath + " Out:" + out)
 			resp.json({MountPoint: mountPath, Err: null}).end()
 		})
 	}
@@ -73,8 +73,8 @@ app.post('/VolumeDriver.Unmount', function(req, resp) {
 	if(!mountPath)
 		return resp.json({Err: "Volume_Name does not exist OR Invalid Volume_Name provided"}).end()
 	if(req.body.Name.match("^ssh") && mounts[mountPath]) {
-		exec("fusermount -u " + mountPath)
-		console.log("\tUnmounted the path " + mountPath)
+		var out = exec("fusermount -u " + mountPath).output
+		console.log("\tUnmounted the path " + mountPath + " Out: " + out)
 		delete mounts[mountPath]
 	}
 	resp.json({MountPoint: mountPath, Err: null}).end()
